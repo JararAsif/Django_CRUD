@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}CRUD Operations{% endblock title %}
+
+{% block main_content%}
+<section class="container display-flex justify-content-center" style="height: 100vh;">
+    <h1 id="title">CRUD Operation Application</h1>
+    <h1 id="pagename">Update Record</h1>
+
+
+<div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+  <div class="col-sm-8">
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Submit" class="btn btn-primary custombtn1">
+    </form>
+  </div>
+</div>
+
+
+
+    </div>
+</section>
+{% endblock main_content%}
