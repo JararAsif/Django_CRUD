@@ -1,13 +1,23 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from .models import Employee
+from .models import Employee,Department
 from .forms import Add_Employee_Form
 
 # Create your views here.
 class Home(View):
-    def get(self,request):
-        data = Employee.objects.all()
+    def get(self,request,code):
+        dept=Department.objects.get(code=code)
+        data = Employee.objects.filter(department_name=dept)
         return render(request,'home.html',{'emp_data':data})
+    
+    
+class main_page(View):
+    def get(self,request):
+        data=Department.objects.all()
+        return render(request,'main_page.html',{'dept':data})    
+
+
+            
 
 
 class Add_Student(View):
@@ -43,7 +53,7 @@ class Update_Record(View):
             emp_data = Add_Employee_Form(request.POST, instance= data)
             if emp_data.is_valid():
                 emp_data.save()
-                return redirect('/')
+                return redirect('admin')
 
 
     

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Departments{% endblock title %}
+
+{% block main_content %}
+<section class="container py-5">
+    <h1 class="text-center mb-4">Engin Tech Departments</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for d in dept %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">{{ d.name }}</h5>
+                    <p class="card-text">
+                        <strong>Code:</strong> {{ d.code }}<br>
+                        <strong>Description:</strong> {{ d.description|default:"No description available." }}
+                    </p>
+                </div>
+                 <div class="card-footer text-end bg-white border-top-0">
+                    <a href="{% url 'department_detail' d.code %}" class="btn btn-outline-primary btn-sm">View Employees</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted text-center">No departments available.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock main_content %}

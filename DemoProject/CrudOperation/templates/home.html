@@ -17,7 +17,7 @@
                     <th scope="col">#</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">Employee Id</th>
+                    <th scope="col">Department</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ x.First_Name }}</td>
                     <td>{{ x.Last_Name }}</td>
-                    <td>{{ x.Emp_id }}</td>
+                    <td>{{ x.department_name }}</td>
                     <td>
                         <div class="d-flex gap-2">
                             <form action="{% url 'delete_student' %}" method="POST">
